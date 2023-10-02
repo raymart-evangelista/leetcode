@@ -1,0 +1,41 @@
+let inp = [
+  {"type": "fruit", "name": "watermelon"},
+  {"type": "meat", "name": "steak"},
+  {"type": "vegetable", "name": "broccoli"},
+  {"type": "fruit", "name": "strawberry"},
+  {"type": "fruit", "name": "apple"},
+]
+
+function bagItems(input, numOfItemsPerBag) {
+
+  const grouped = groupByType(input)
+
+  // with grouped items by type, we can now sort depending on type and numOfItemsPerBag
+  const output = []
+  for (let type in grouped) {
+    const group = grouped[type]
+    while (group.length > 0) {
+      console.log(group)
+      console.log("---")
+      output.push(group.splice(0, numOfItemsPerBag))
+    }
+  }
+
+  return console.log(output)
+}
+
+function groupByType(input) {
+  let groups = {}
+  for (let item of input) {
+
+    // if group type doesn't exist, make it
+    if (!groups[item.type]) {
+      groups[item.type] = []
+    }
+    groups[item.type].push(item)
+  }
+
+  return groups
+}
+
+bagItems(inp, 2)
