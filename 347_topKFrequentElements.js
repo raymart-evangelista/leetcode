@@ -14,32 +14,30 @@ var topKFrequent = function(nums, k) {
     }
 
     // creating an array to hold an array of the nums with the frequency as the indices
-    let frequency = new Array(nums.length + 1).fill(0)
+    let frequency = new Array(nums.length + 1)
 
     for (let num in numsFrequency) {
       let freq = numsFrequency[num]
       if (!frequency[freq]) {
         frequency[freq] = []
       }
-      frequency[freq].push(num)
+      frequency[freq].push(parseInt(num))
     }
 
     console.log(frequency)
 
     let topKFrequent = []
-    let kCounter = 0
-    for (let i=frequency.length - 1; i>0; i--) {
-      if (frequency[i] == 0) {
-        continue
+    for (let i=frequency.length - 1; i>=0 && topKFrequent.length < k; i--) {
+      if (frequency[i]) {
+        topKFrequent.push(...frequency[i])
       }
-      if (kCounter == k) {
-        return topKFrequent
-      }
-      topKFrequent.push(parseInt(frequency[i]))
-      kCounter++
       
     }
     // sorting the keys by 
+    return topKFrequent
 };
 
-console.log(topKFrequent([1,1,1,2,2,3,3,3,3,4,4], 2))
+// console.log(topKFrequent([1,1,1,2,2,3,3,3,3,4,4], 2))
+// console.log(topKFrequent([1], 1))
+// console.log(topKFrequent([3,3,4,4], 2))
+console.log(topKFrequent([3,0,1,0], 1))
