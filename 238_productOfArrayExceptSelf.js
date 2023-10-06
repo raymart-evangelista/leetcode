@@ -3,21 +3,32 @@
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-  // let hashedNums = {}
-  // for (let i=0; i<nums.length; i++) {
-  //   let currentNum = nums[i]
-  //   hashedNums[currentNum] = true
-  // }
+  // hashmap
+  // key is going to be index
+  // value is going to be iterated answer that will go to become output
 
-  // return Object.values(hashedNums)
-  let output = new Array(nums.length).fill(1)
+  // prefix = [a, a*b, a*b*c, a*b*c*d]
+  // postfix = [a*b*c*d, b*c*d, c*d, d]
+  // output = [prefix of prev index * postfix of next index]
+  let output = []
   for (let i=0; i<nums.length; i++) {
-    for (let j=0; j<nums.length; j++) {
-      if (i != j) {
-        output[i] *= nums[j]
-      }
+    if (output[i-1] != undefined) {
+      output[i] = output[i-1] * nums[i-1]
+    } else {
+      output[i] = 1
     }
   }
+
+  let post = 1
+  for (let i=nums.length-1; i>= 0; i--) {
+    if (output[i+1] != undefined) {
+      post = post * nums[i+1] 
+      output[i] = output[i] * post
+    } else {
+      output[i] = output[i] * post
+    }
+  }
+  
 
   return output
 };
