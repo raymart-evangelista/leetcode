@@ -3,13 +3,6 @@
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-  // hashmap
-  // key is going to be index
-  // value is going to be iterated answer that will go to become output
-
-  // prefix = [a, a*b, a*b*c, a*b*c*d]
-  // postfix = [a*b*c*d, b*c*d, c*d, d]
-  // output = [prefix of prev index * postfix of next index]
   let output = []
   for (let i=0; i<nums.length; i++) {
     if (output[i-1] != undefined) {
