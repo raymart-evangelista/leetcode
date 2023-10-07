@@ -15,6 +15,11 @@
  * }
  */
 
+/**
+ * less brute force approach of using math
+ * and making one gigantic array out of all the sub arrays
+ */
+
 var isValidSudoku = function(board) {
     
 };
