@@ -1,5 +1,5 @@
-* @param {character[][]} board
 /**
+ * @param {character[][]} board
  * @return {boolean}
  */
 
@@ -21,7 +21,9 @@
  */
 
 var isValidSudoku = function(board) {
-    
+  for (let i=0; i<board.length; i++) {
+    console.log(board[i])
+  }  
 };
 
 // return true
@@ -47,3 +49,5 @@ let board2 =
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
+
+isValidSudoku(board)
