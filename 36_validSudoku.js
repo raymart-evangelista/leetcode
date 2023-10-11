@@ -22,7 +22,13 @@
 
 var isValidSudoku = function(board) {
   for (let i=0; i<board.length; i++) {
-    console.log(board[i])
+    let row = board[i]
+    console.log(row)
+    for (let j=0; j<row.length; j++) {
+      let value = row[j]
+      console.log(value)
+    }
+
   }  
 };
 
