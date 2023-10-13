@@ -41,6 +41,11 @@ var isValidSudoku = function(board) {
     return true
   }
 
+  for (let i=0; i<board.length; i++) {
+    let row = board[i]
+    let numbers = {}
+  }
+
   // let flattenedBoard = board.flat()
   // // console.log(flattenedBoard)
   // for (let i=0; i<flattenedBoard.length; i++) {
