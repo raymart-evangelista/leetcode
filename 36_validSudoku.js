@@ -41,6 +41,14 @@ var isValidSudoku = function(board) {
     return true
   }
 
+  // check each col for repeats
+  // flatten 2d arr to 1d
+
+  // to check columns, use math and hashmap
+  // math in order to go traverse current column
+  // hashmap to cross reference current checked numbers in hashmap
+  // if value is already in hashmap, return false
+  let flatBoard = board.flat()
   for (let i=0; i<board.length; i++) {
     let row = board[i]
     let numbers = {}
