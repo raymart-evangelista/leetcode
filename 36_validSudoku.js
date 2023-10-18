@@ -46,6 +46,7 @@ var isValidSudoku = function(board) {
 
   // to check columns, use math and hashmap
   // math in order to go traverse current column
+  // math to change current column
   // hashmap to cross reference current checked numbers in hashmap
   // if value is already in hashmap, return false
   let flatBoard = board.flat()
@@ -54,13 +55,11 @@ var isValidSudoku = function(board) {
     let numbers = {}
   }
 
-  // let flattenedBoard = board.flat()
-  // // console.log(flattenedBoard)
-  // for (let i=0; i<flattenedBoard.length; i++) {
-  //   if (i % == 0) {
-  //     console.log(flattenedBoard[i])
-  //   }
-  // }
+  // to check for nine 3x3 sub-boxes,
+  // math to check each number in the current sub-box
+  // math to change current sub-box
+  // hashmap to cross reference current checked numbers in hashmap
+  // if value is already in hashmap, return false
 };
 
 // return true
