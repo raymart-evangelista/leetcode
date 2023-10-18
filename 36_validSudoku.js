@@ -38,7 +38,6 @@ var isValidSudoku = function(board) {
         numbers[value] = true
       }
     }
-    return true
   }
 
   // check each col for repeats
@@ -50,9 +49,20 @@ var isValidSudoku = function(board) {
   // hashmap to cross reference current checked numbers in hashmap
   // if value is already in hashmap, return false
   let flatBoard = board.flat()
-  for (let i=0; i<board.length; i++) {
-    let row = board[i]
-    let numbers = {}
+  let colNumbers = {}
+  let math = 0
+  for (let i=0; i<flatBoard.length; i++) {
+    let currentValue = flatBoard[i + math]
+    console.log(i + math)
+    console.log(currentValue)
+    if (colNumbers[currentValue] && currentValue != ".") {
+      return false
+    }
+    if (!colNumbers[currentValue]) {
+      colNumbers[currentValue] = true
+    }
+    // increment math
+    math += 8
   }
 
   // to check for nine 3x3 sub-boxes,
@@ -99,4 +109,4 @@ let board3 =
 ,[".",".",".",".","8",".",".","7","9"]]
 
 // console.log(isValidSudoku(board))
-console.log(isValidSudoku(board3))
+console.log(isValidSudoku(board2))
