@@ -52,17 +52,23 @@ var isValidSudoku = function(board) {
   let colNumbers = {}
   let math = 0
   for (let i=0; i<flatBoard.length; i++) {
-    let currentValue = flatBoard[i + math]
-    console.log(i + math)
-    console.log(currentValue)
+    let column = (i / 9) | 0
+    let index = (i % 9) * 9 + column
+
+    let currentValue = flatBoard[index]
+
     if (colNumbers[currentValue] && currentValue != ".") {
       return false
     }
+
     if (!colNumbers[currentValue]) {
       colNumbers[currentValue] = true
     }
-    // increment math
-    math += 8
+
+    // reset colNums every 9 iterations
+    if (i % 9 == 8) {
+      colNumbers = {}
+    }
   }
 
   // to check for nine 3x3 sub-boxes,
