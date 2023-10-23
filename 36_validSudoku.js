@@ -75,8 +75,18 @@ var isValidSudoku = function(board) {
   // math to change current sub-box
   // hashmap to cross reference current checked numbers in hashmap
   // if value is already in hashmap, return false
+  let subBoxIndex = 0
   for (let i=0; i<flatBoard.length; i++) {
-    // after every 3 iterations, increase index number by 7
+    // after every 3 iterations, increase subBoxIndex number by 7
+    // console.log(flatBoard[subBoxIndex + i])
+
+    if (i % 3 == 2) {
+      subBoxIndex += 7
+    } else {
+      subBoxIndex += 1
+    }
+
+    console.log(subBoxIndex)
 
     // after 9 iterations, go to next quadrant, 9 quadrants in total (minus 17)
 
@@ -133,4 +143,4 @@ let board3 =
 ,[".",".",".",".","8",".",".","7","9"]]
 
 // console.log(isValidSudoku(board))
-console.log(isValidSudoku(board2half))
+console.log(isValidSudoku(board))
