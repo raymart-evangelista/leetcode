@@ -77,6 +77,7 @@ var isValidSudoku = function(board) {
   // if value is already in hashmap, return false
   let subBoxIndex = 0
   let subBoxNumbers = {}
+  let iterationCounter = 1
   for (let i=0; i<flatBoard.length; i++) {
     let currentValue = flatBoard[subBoxIndex]
     // after every 3 iterations, increase subBoxIndex number by 7
@@ -93,16 +94,22 @@ var isValidSudoku = function(board) {
     console.log(subBoxIndex)
 
     // after 9 iterations, go to next quadrant, 9 quadrants in total (minus 17)
-    if (i % 8 == 0 && i != 0) {
+    // if (i % 8 == 0 && i != 0) {
+    if (iterationCounter == 9) {
       console.log(subBoxNumbers)
       // reset hashmap
       subBoxNumbers = {}
       // move onto next quad
       subBoxIndex = subBoxIndex - 17
-    } else if (i % 3 == 2) {
+      // reset iterationCounter
+      iterationCounter = 1
+    // } else if (i % 3 == 2) {
+    } else if (iterationCounter % 3 == 0 && iterationCounter != 0) {
       subBoxIndex += 7
+      iterationCounter++
     } else {
       subBoxIndex += 1
+      iterationCounter++
     }
 
     // if (i % 3 == 2) {
