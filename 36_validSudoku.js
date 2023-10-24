@@ -92,18 +92,26 @@ var isValidSudoku = function(board) {
 
     console.log(subBoxIndex)
 
-    if (i % 3 == 2) {
+    // after 9 iterations, go to next quadrant, 9 quadrants in total (minus 17)
+    if (i % 8 == 0 && i != 0) {
+      console.log(subBoxNumbers)
+      // reset hashmap
+      subBoxNumbers = {}
+      // move onto next quad
+      subBoxIndex = subBoxIndex - 17
+    } else if (i % 3 == 2) {
       subBoxIndex += 7
     } else {
       subBoxIndex += 1
     }
 
+    // if (i % 3 == 2) {
+    // } else {
+    //   subBoxIndex += 1
+    // }
 
-    // after 9 iterations, go to next quadrant, 9 quadrants in total (minus 17)
 
-    if (i % 9 == 0 && i != 0) {
-      console.log(subBoxNumbers)
-    }
+
 
     // after 3 quadrants or 27 iterations, change index number by 1
   }
