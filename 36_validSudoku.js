@@ -99,6 +99,8 @@ var isValidSudoku = function(board) {
     if (i % 27 == 26) {
       subBoxIndex += 1
       subBoxIterator = 1
+      console.log(subBoxNumbers)
+      subBoxNumbers = {}
     } else if (subBoxIterator == 9) {
       console.log(subBoxNumbers)
       // reset hashmap
@@ -115,16 +117,6 @@ var isValidSudoku = function(board) {
       subBoxIndex += 1
       subBoxIterator++
     }
-
-    // if (i % 3 == 2) {
-    // } else {
-    //   subBoxIndex += 1
-    // }
-
-
-
-
-    // after 3 quadrants or 27 iterations, change index number by 1
   }
 };
 
