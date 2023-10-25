@@ -118,6 +118,8 @@ var isValidSudoku = function(board) {
       subBoxIterator++
     }
   }
+
+  return true
 };
 
 // return true
