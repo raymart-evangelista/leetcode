@@ -93,8 +93,6 @@ var isValidSudoku = function(board) {
 
     console.log(subBoxIndex)
 
-    // after 9 iterations, go to next quadrant, 9 quadrants in total (minus 17)
-    // if (i % 8 == 0 && i != 0) {
 
     if (i % 27 == 26) {
       subBoxIndex += 1
@@ -109,7 +107,6 @@ var isValidSudoku = function(board) {
       subBoxIndex -= 17
       // reset subBoxIterator
       subBoxIterator = 1
-    // } else if (i % 3 == 2) {
     } else if (subBoxIterator % 3 == 0 && subBoxIterator != 0) {
       subBoxIndex += 7
       subBoxIterator++
