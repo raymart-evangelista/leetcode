@@ -1,18 +1,15 @@
 const encode = (list) => {
   // when encoding, using a number followed by a special character
   let encoded = ''
-  for (let i=0; i<list.length - 1; i++) {
-    let charAmt = list[i].length
-    let specialChar = '#'
-    let suffix =  charAmt + specialChar
-    encoded = encoded + suffix + list[i]
+  for (let i=0; i<list.length; i++) {
+    encoded += `${list[i].length}#${list[i]}`
   }
   return encoded
 
 }
 
 const decode = (str) => {
-  console.log(str)
+  // console.log(str)
   // precode a hashmap of all letters in the alphabet,
   // if the char in the string is not a letter, it's the char used to encode
   // so use that char(s) to split the words
@@ -32,7 +29,7 @@ const decode = (str) => {
     } else if (currentChar != '#' && stringLength && stringCounter == undefined) {
       stringLength += currentChar
     } else if  (currentChar == '#' && stringCounter == undefined) {
-      console.log(stringLength)
+      // console.log(stringLength)
       stringCounter = parseInt(stringLength)
       stringLength = undefined
     } else {
@@ -52,5 +49,6 @@ const decode = (str) => {
   return list
 }
 
-let thingToEncode = ['lintlintlintlintlintlintlintlintlint', 'code', 'love', 'you']
-console.log(decode(encode(thingToEncode)))
+// let thingToEncode = ['lintlintlintlintlintlintlintlintlint', 'code', 'love', 'you']
+// let thingToEncode2 = ["lint","code","love","you"]
+// console.log(decode(encode(thingToEncode2)))
