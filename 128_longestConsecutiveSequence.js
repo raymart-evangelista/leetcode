@@ -3,7 +3,7 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-  if (nums.length = 1) {
+  if (nums.length == 1) {
     return 1
   }
   
