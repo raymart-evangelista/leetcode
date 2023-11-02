@@ -3,7 +3,9 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-  // put numbers from array into a hash
+  if (nums.length = 1) {
+    return 1
+  }
   
   // create empty hash
   let hashedNums = {}
