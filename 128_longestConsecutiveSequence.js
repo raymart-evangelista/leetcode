@@ -8,7 +8,7 @@ var longestConsecutive = function(nums) {
   // create empty hash
   let hashedNums = {}
   
-  // insert all array elems to hash
+  // insert all array elements to hash
   // the key is going to be the element value, the hashed value will be the sequence number
   for (let i=0; i<nums.length; i++) {
     hashedNums[nums[i]] = 0
@@ -24,20 +24,18 @@ var longestConsecutive = function(nums) {
     //  in the consecutive starting with this elem
     if (hashedNums[elementBefore] == undefined) {
       let counter = 1
-      // hashedNums[element] = 1
       let nextElement = element + 1
         // iterate from next elem, arr[i] + 1 till last elem that can be found,
         while (hashedNums[nextElement] != undefined) {
-          // hashedNums[element] += 1
           counter += 1
           nextElement += 1
+          // if count is more than previous longest subsequence found, update count
           if (counter > highestCount) {
             highestCount =  counter
           }
         }
       }
     }
-    // if count is more than previous longest subsequence found, update count
 
     return highestCount
 };
