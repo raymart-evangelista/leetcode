@@ -3,7 +3,9 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-  if (nums.length == 1) {
+  if (nums.length == 0) {
+    return 0
+  } else if (nums.length == 1) {
     return 1
   }
   
@@ -17,7 +19,7 @@ var longestConsecutive = function(nums) {
   }
 
   // for every elem,
-  let highestCount = 0
+  let highestCount = 1
   for (let i=0; i<nums.length; i++) {
     let element = nums[i]
     let elementBefore = element - 1
