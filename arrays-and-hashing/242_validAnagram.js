@@ -29,7 +29,6 @@ let validAnagram = (string1, string2) => {
     let currentChar = string2[i]
     if (stringCharMap.has(currentChar)) {
       let currentCount = stringCharMap.get(string2[i])
-      console.log(currentCount)
       if (currentCount > 0) {
         let newCount = currentCount - 1
         stringCharMap.set(string2[i], newCount)
@@ -39,6 +38,8 @@ let validAnagram = (string1, string2) => {
         // not a valid anagram
         return false
       }
+    } else {
+      return false
     }
   }
   return true
