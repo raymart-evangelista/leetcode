@@ -2,6 +2,9 @@ let s = 'anagram'
 let t = 'nagaram'
 let r = 'car'
 
+let unicode = '\uD83D\uDC04'
+console.log(unicode)
+
 // i'm not making the assumptions that the two strings are the same length
 
 let validAnagram = (string1, string2) => {
@@ -22,7 +25,7 @@ let validAnagram = (string1, string2) => {
     }
   }
 
-  console.log(stringCharMap)
+  // console.log(stringCharMap)
 
   // recreate string2 with string1 letters
   for (let i = 0; i < string2.length; i++) {
@@ -32,7 +35,7 @@ let validAnagram = (string1, string2) => {
       if (currentCount > 0) {
         let newCount = currentCount - 1
         stringCharMap.set(string2[i], newCount)
-        console.log(stringCharMap)
+        // console.log(stringCharMap)
       } else {
         // this means that the currentCount is 0 or less.. meaning that
         // not a valid anagram
