@@ -1,50 +1,59 @@
-// /**
-//  * @param {string[]} strs
-//  * @return {string[][]}
-//  */
-// var groupAnagrams = function(strs) {
-//   let strsSorted = []
+// const strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+// const groupAnagrams = (strs) => {
+//   let map = new Map()
+//   for (let i = 0; i < strs.length; i++) {
+//     // normalize the current string
+//     let currStr = strs[i]
+//     let norm = currStr.split('').sort().join('')
 
-//   // sort
-//   for (const s of strs) {
-//       let sorted = s.split("").sort().join("")
-//       strsSorted.push(sorted)
+//     if (map.has(norm)) {
+//       let currentArr = map.get(norm)
+//       currentArr.push(currStr)
+//       map.set(norm, currentArr)
+//     } else {
+//       let newArr = Array(currStr)
+//       map.set(norm, newArr)
+//     }
 //   }
 
-//   // add to hash
-//   let hashedAnagrams = {}
-//   for (let i=0; i<strs.length; i++) {
-//       if (hashedAnagrams[strsSorted[i]]) {
-//           hashedAnagrams[strsSorted[i]] = [
-//               ...hashedAnagrams[strsSorted[i]],
-//               strs[i]
-//           ]
-//       } else {
-//           hashedAnagrams[strsSorted[i]] = [strs[i]]
-//       }
-//   }
+//   let returnArr = Array()
+//   map.forEach((value, key) => {
+//     returnArr.push(value)
+//   })
+//   return returnArr
+// }
 
-//   return Object.values(hashedAnagrams)
+// // console.log(groupAnagrams(strs))
 
-// };
+// let strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+// let strs = ['a']
 
-function groupAnagrams(strings) {
-  let groupedStrings = {}
-  for (let i=0; i<strings.length; i++) {
-    let sortedKey = sortString(strings[i])
-    if (!groupedStrings[sortedKey]) {
-      groupedStrings[sortedKey] = []
+let groupAnagrams = (strs) => {
+  let map = new Map()
+
+  for (let i = 0; i < strs.length; i++) {
+    let currStr = strs[i]
+    let normStr = currStr.split('').sort().join('')
+    // ['e','a','t'] -> ['a','e','t'] -> 'aet' normalized string
+    if (map.has(normStr)) {
+      let currArr = map.get(normStr)
+      currArr.push(currStr)
+      map.set(normStr, currArr)
+    } else {
+      map.set(normStr, [currStr])
     }
-    groupedStrings[sortedKey].push(strings[i])
   }
-  return Object.values(groupedStrings)
+
+  let returnArr = new Array()
+  map.forEach((value) => {
+    returnArr.push(value)
+  })
+
+  return returnArr
 }
 
-function sortString(string) {
-  return string.split("").sort().join("")
-}
+// n = length of strs arr
+// m = length of str
+// O(n*m)
 
-// console.log(sortString("eat"))
-
-let strs = ["eat","tea","tan","ate","nat","bat"]
 console.log(groupAnagrams(strs))
