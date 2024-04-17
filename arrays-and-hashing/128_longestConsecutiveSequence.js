@@ -44,6 +44,7 @@
 //     return highestCount
 // };
 
+/*
 const longestConsecutive = (nums) => {
   let map = new Map()
   for (let num of nums) {
@@ -75,6 +76,24 @@ const longestConsecutive = (nums) => {
     }
   }
   return longestConsecutive
+}
+*/
+
+const longestConsecutive = (nums) => {
+  let set = new Set(nums)
+  let longest = 0
+  for (let num of set) {
+    if (!set.has(num - 1)) {
+      let currLongest = 1
+      while (set.has(num + currLongest)) {
+        currLongest += 1
+      }
+      if (currLongest > longest) {
+        longest = currLongest
+      }
+    }
+  }
+  return longest
 }
 
 let nums = [100, 4, 200, 1, 3, 2]
