@@ -43,12 +43,12 @@
 
 let threeSum = (numbers) => {
   // sort array first and get rid of dupes
-  let nums = numbers.sort()
+  let nums = numbers.sort((a, b) => a - b)
   let set = new Set()
   let output = []
   for (let i = 0; i < nums.length; i++) {
     let l = i + 1
-    let r = nums.length - 1 - i
+    let r = nums.length - 1
     while (l < r) {
       let sum = nums[i] + nums[l] + nums[r]
       if (sum == 0) {
@@ -69,6 +69,8 @@ let threeSum = (numbers) => {
 }
 
 let nums = [-1, 0, 1, 2, -1, -4]
+// let nums = [-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]
+
 // let nums = [0, 0, 0]
 
 console.log(threeSum(nums))
