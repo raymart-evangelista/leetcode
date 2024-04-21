@@ -42,8 +42,9 @@
 // };
 
 let threeSum = (numbers) => {
-  // sort array first
-  let nums = numbers.sort()
+  // sort array first and get rid of dupes
+  const unique = new Set(numbers)
+  let nums = new Array(...unique).sort()
   let output = []
   for (let i = 0; i < nums.length; i++) {
     let l = i + 1
