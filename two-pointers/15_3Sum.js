@@ -43,16 +43,19 @@
 
 let threeSum = (numbers) => {
   // sort array first and get rid of dupes
-  const unique = new Set(numbers)
-  let nums = new Array(...unique).sort()
+  let nums = numbers.sort()
+  let set = new Set()
   let output = []
   for (let i = 0; i < nums.length; i++) {
     let l = i + 1
-    let r = nums.length - 1
+    let r = nums.length - 1 - i
     while (l < r) {
       let sum = nums[i] + nums[l] + nums[r]
       if (sum == 0) {
-        output.push([nums[i], nums[l], nums[r]])
+        if (!set.has(`${nums[i]}, ${nums[l]}, ${nums[r]}`)) {
+          set.add(`${nums[i]}, ${nums[l]}, ${nums[r]}`)
+          output.push([nums[i], nums[l], nums[r]])
+        }
         l++
       } else if (sum < 0) {
         l++
