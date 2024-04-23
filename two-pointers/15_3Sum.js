@@ -44,19 +44,30 @@
 let threeSum = (numbers) => {
   // sort array first and get rid of dupes
   let nums = numbers.sort((a, b) => a - b)
-  let set = new Set()
   let output = []
   for (let i = 0; i < nums.length; i++) {
+    if (i > 0 && nums[i] == nums[i - 1]) {
+      continue
+    }
     let l = i + 1
     let r = nums.length - 1
     while (l < r) {
       let sum = nums[i] + nums[l] + nums[r]
       if (sum == 0) {
-        if (!set.has(`${nums[i]}, ${nums[l]}, ${nums[r]}`)) {
-          set.add(`${nums[i]}, ${nums[l]}, ${nums[r]}`)
-          output.push([nums[i], nums[l], nums[r]])
+        output.push([nums[i], nums[l], nums[r]])
+        while (l < r && nums[l] == nums[l + 1]) {
+          l++
         }
+        while (l < r && nums[r] == nums[r - 1]) {
+          r--
+        }
+        // the two lines below me is needed because
+        // the sum is already at 0, if we keep our l going left and
+        // the sum is still 0, that means the triple is already in
+        // the array. same goes for if the r keeps going right and
+        // the sum is 0
         l++
+        r--
       } else if (sum < 0) {
         l++
       } else if (sum > 0) {
@@ -68,7 +79,8 @@ let threeSum = (numbers) => {
   return output
 }
 
-let nums = [-1, 0, 1, 2, -1, -4]
+// let nums = [-1, 0, 1, 2, -1, -4]
+let nums = [0, 0, 0, 0]
 // let nums = [-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]
 
 // let nums = [0, 0, 0]
