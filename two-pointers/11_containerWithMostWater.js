@@ -1,30 +1,21 @@
-/**
- * @param {number[]} height
- * @return {number}
- */
-var maxArea = function(height) {
-    // two endpoints of the iTH line are (i, 0) and (i, height[i])
-    let firstPointer = 8
-    let secondPointer = 7
-    let firstPointerIndex = 1
-    let secondPointerIndex = 8
-    let gap = Math.abs(firstPointerIndex - secondPointerIndex)
-    let length = 0
-    if (firstPointer > secondPointer) {
-      length = secondPointer
-    } else {
-      length = firstPointer
+const maxArea = (height) => {
+  let maxWater = 0
+  let l = 0
+  let r = height.length - 1
+  while (l < r) {
+    let currArea = (r - l) * Math.min(height[l], height[r])
+    if (currArea > maxWater) {
+      maxWater = currArea
     }
-    let area = length * gap
-    return area
-};
+    if (height[l] > height[r]) {
+      r--
+    } else {
+      l++
+    }
+  }
+  return maxWater
+}
 
-let height1 = [1,8,6,2,5,4,8,3,7]
-// area = 1, move right pointer, area = 1 move left pointer, area = 6 move right pointer,
-// area = 4 move right pointer, area = 15 move right pointer, area = 16 move right pointer,
-// area = 45 move right pointer, area = 18 move right pointer, area = 49 END,
-// move left pointer, till end -> return max area
-console.log(maxArea(height1))
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 
-let height2 = [1,1]
-console.log(maxArea(height2))
+maxArea(height)
