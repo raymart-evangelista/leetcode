@@ -1,33 +1,34 @@
 let isValid = (s) => {
+  if (s.length < 2) {
+    return false
+  }
   let stack = []
-  let closingType = null
   for (type of s) {
-    if (closingType && closingType !== type) {
-      return false
-    } else if (closingType === type) {
-      stack.pop()
-      closingType = null
-    } else {
-      stack.push(type)
-      switch (type) {
-        case '(':
-          closingType = ')'
-          break
-        case '[':
-          closingType = ']'
-          break
-        default:
-          closingType = '}'
-          break
-      }
+    switch (type) {
+      case ')':
+        if (stack.pop() !== '(') return false
+        break
+      case ']':
+        if (stack.pop() !== '[') return false
+        break
+      case '}':
+        if (stack.pop() !== '{') return false
+        break
+      default:
+        stack.push(type)
+        break
     }
   }
-
-  return true
+  if (stack.length > 0) {
+    return false
+  } else {
+    return true
+  }
 }
 
 // s = '()'
 // s = '()[]{}'
 // s = '(]'
-s = '{[]}'
+// s = '{[]}'
+s = '(('
 isValid(s)
